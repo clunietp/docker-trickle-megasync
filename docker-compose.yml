@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  megasync_trickle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: megasync_trickle
+    container_name: megasync_trickle
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    volumes:
+      # map your local sync dir to /mnt/megasync
+      - /path/to/your/local/dir:/mnt/megasync
+    entrypoint: /bin/sh
+    # change trickle parameters here (or remove trickle entirely)
+    #  -d RATE:  Limit the download bandwidth consumption to RATE KB/s
+    #  -u RATE:  Limit the upload bandwidth consumption to RATE KB/s
+    #  see other parameters at https://linux.die.net/man/1/trickle
+    # megasimplesync localdir remotedir
+    command: -c "trickle -s -d 1024 -u 1024 megasimplesync /mnt/megasync /"
+    environment:
+      - MEGA_DEBUG=0  # set to 1 or 2 to see mega debugging output
+      - MEGA_EMAIL=user@domain.com  # your mega username
+      - MEGA_PWD=your_mega_password      # your mega password
