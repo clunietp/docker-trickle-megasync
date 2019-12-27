@@ -12,4 +12,4 @@ Usage:
   - Add your Mega credentials 
   - Change desired bandwidth parameters or remove Trickle completely (default:  1MB/s down and up)
 - `docker-compose build`
-- `docker-compose run -d`
+- `docker-compose up -d`
