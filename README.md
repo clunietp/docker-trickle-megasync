@@ -7,9 +7,9 @@ Features:
 - integrated Trickle (https://github.com/mariusae/trickle) for bandwidth limiting (optional)
 
 Usage:
-- Edit the docker-compose.yml file
+- Edit the `docker-compose.yml` file
   - Change the drive mapping to your local directory
-  - Update your Mega credentials 
-  - Change any desired bandwidth parameters or remove Trickle completely (default:  1MB/s down and up)
+  - Add your Mega credentials 
+  - Change desired bandwidth parameters or remove Trickle completely (default:  1MB/s down and up)
 - `docker-compose build`
 - `docker-compose run -d`
